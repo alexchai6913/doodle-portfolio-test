@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Doodler | Designer Portfolio</title>
+  
+  <!-- Bootstrap 4.4.1 CSS ONLY -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  
+  <!-- Plus Jakarta Sans Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light text-dark" style="font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden;">
+
+  <!-- HERO SECTION -->
+  <header class="bg-warning position-relative overflow-hidden d-flex align-items-center" style="min-height: 100vh;">
+    
+    <!-- Navbar -->
+    <nav class="position-absolute w-100 d-flex justify-content-between align-items-center p-4 p-md-5" style="top: 0; z-index: 100;">
+      <div class="text-dark" style="font-weight: 800; font-size: 1.5rem; letter-spacing: -1px;">doodle.studio</div>
+      <div class="d-none d-md-flex">
+        <a href="#work" onclick="event.preventDefault(); document.querySelector(this.hash).scrollIntoView({behavior:'smooth'});" class="text-dark mx-3 text-decoration-none" style="font-weight: 600; letter-spacing: -0.5px;">Work</a>
+        <a href="#about" onclick="event.preventDefault(); document.querySelector(this.hash).scrollIntoView({behavior:'smooth'});" class="text-dark mx-3 text-decoration-none" style="font-weight: 600; letter-spacing: -0.5px;">About</a>
+      </div>
+      <a href="#contact" onclick="event.preventDefault(); document.querySelector(this.hash).scrollIntoView({behavior:'smooth'});" class="btn btn-dark badge-pill px-4 py-2 shadow-sm" style="font-weight: 800; letter-spacing: -0.5px;">Hire Me 👋</a>
+    </nav>
+
+    <!-- Floating Doodles (Emojis used as zero-asset SVGs) -->
+    <div class="position-absolute" style="top: 15%; left: 8%; font-size: 4rem; transform: rotate(-25deg);">🎨</div>
+    <div class="position-absolute" style="top: 20%; right: 12%; font-size: 5rem; transform: rotate(15deg);">✨</div>
+    <div class="position-absolute" style="bottom: 15%; left: 15%; font-size: 3.5rem; transform: rotate(10deg);">🚀</div>
+    <div class="position-absolute" style="bottom: 25%; right: 8%; font-size: 4.5rem; transform: rotate(-15deg);">✌️</div>
+    <div class="position-absolute d-none d-md-block" style="top: 45%; left: 3%; font-size: 3rem; transform: rotate(45deg);">✏️</div>
+
+    <!-- Hero Content -->
+    <div class="container text-center position-relative mt-5 pt-5" style="z-index: 10;">
+      <div class="badge badge-pill badge-light shadow-sm text-dark px-4 py-2 mb-4" style="font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;">Hello, World!</div>
+      
+      <!-- Highly stylized typography using inline styles to override Bootstrap's basic limits -->
+      <h1 class="text-dark mb-3 mx-auto" style="font-weight: 800; font-size: 11vw; line-height: 0.85; letter-spacing: -0.07em;">
+        CREATIVE<br>DOODLER
+      </h1>
+      
+      <p class="mx-auto text-dark mt-4 px-3" style="font-weight: 600; font-size: 1.25rem; line-height: 1.6; letter-spacing: -0.02em; max-width: 600px;">
+        I design fun, engaging, and colorful digital experiences. No boring strict Swiss grids here—just pure, delightful creative chaos.
+      </p>
+    </div>
+  </header>
+
+  <!-- STATIC MARQUEE TAPE -->
+  <div class="bg-dark text-white py-3 overflow-hidden d-flex align-items-center" style="transform: rotate(-2deg) scale(1.05); margin-top: -25px; z-index: 20; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+    <div class="text-nowrap" style="font-weight: 800; font-size: 2rem; letter-spacing: -1px; text-transform: uppercase;">
+      &nbsp;✦ UI/UX DESIGN ✦ WEB ANIMATION ✦ BRAND IDENTITY ✦ DOODLES ✦ UI/UX DESIGN ✦ WEB ANIMATION ✦ BRAND IDENTITY ✦ DOODLES ✦ UI/UX DESIGN
+    </div>
+  </div>
+
+  <!-- SELECTED WORKS SECTION -->
+  <section id="work" class="container py-5 mt-5">
+    <div class="text-center mb-5 pb-4 mt-5">
+      <h2 class="text-dark" style="font-weight: 800; font-size: 4rem; line-height: 1; letter-spacing: -0.05em;">SELECTED<br>MAGIC ✨</h2>
+    </div>
+    
+    <!-- Staggered Awwwards-style Grid -->
+    <div class="row">
+      
+      <!-- Project 1 -->
+      <div class="col-md-6 mb-5">
+        <div class="bg-danger text-white p-5 rounded-lg shadow-lg position-relative d-flex flex-column justify-content-between" style="min-height: 450px; transform: rotate(-1deg);">
+          <div class="position-absolute" style="top: 30px; right: 30px; font-size: 3.5rem; transform: rotate(10deg);">🦄</div>
+          <div>
+            <span class="badge badge-pill badge-light text-danger px-3 py-2 mb-3 shadow-sm" style="font-weight: 800; letter-spacing: 1px;">APP DESIGN</span>
+          </div>
+          <div class="mt-5 pt-5">
+            <h3 class="mb-3" style="font-weight: 800; font-size: 3.5rem; line-height: 0.95; letter-spacing: -0.05em;">Candy<br>Crush</h3>
+            <p class="mb-0" style="font-weight: 600; font-size: 1.1rem; line-height: 1.5; letter-spacing: -0.5px;">A sweet approach to addictive UI.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 (Staggered Column) -->
+      <div class="col-md-6 mb-5 mt-md-5 pt-md-5">
+        <div class="bg-primary text-white p-5 rounded-lg shadow-lg position-relative d-flex flex-column justify-content-between" style="min-height: 450px; transform: rotate(2deg);">
+          <div class="position-absolute" style="top: 30px; right: 30px; font-size: 3.5rem; transform: rotate(-15deg);">🪐</div>
+          <div>
+            <span class="badge badge-pill badge-light text-primary px-3 py-2 mb-3 shadow-sm" style="font-weight: 800; letter-spacing: 1px;">WEB PROMO</span>
+          </div>
+          <div class="mt-5 pt-5">
+            <h3 class="mb-3" style="font-weight: 800; font-size: 3.5rem; line-height: 0.95; letter-spacing: -0.05em;">Space<br>Explorer</h3>
+            <p class="mb-0" style="font-weight: 600; font-size: 1.1rem; line-height: 1.5; letter-spacing: -0.5px;">Taking web graphics to outer space.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 3 -->
+      <div class="col-md-6 mb-5">
+        <div class="bg-info text-white p-5 rounded-lg shadow-lg position-relative d-flex flex-column justify-content-between" style="min-height: 450px; transform: rotate(1deg);">
+          <div class="position-absolute" style="top: 30px; right: 30px; font-size: 3.5rem; transform: rotate(20deg);">🍩</div>
+          <div>
+            <span class="badge badge-pill badge-light text-info px-3 py-2 mb-3 shadow-sm" style="font-weight: 800; letter-spacing: 1px;">BRANDING</span>
+          </div>
+          <div class="mt-5 pt-5">
+            <h3 class="mb-3" style="font-weight: 800; font-size: 3.5rem; line-height: 0.95; letter-spacing: -0.05em;">Donut<br>Shop</h3>
+            <p class="mb-0" style="font-weight: 600; font-size: 1.1rem; line-height: 1.5; letter-spacing: -0.5px;">Tasty colors and delicious typography.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 4 (Staggered Column) -->
+      <div class="col-md-6 mb-5 mt-md-5 pt-md-5">
+        <div class="bg-success text-white p-5 rounded-lg shadow-lg position-relative d-flex flex-column justify-content-between" style="min-height: 450px; transform: rotate(-2deg);">
+          <div class="position-absolute" style="top: 30px; right: 30px; font-size: 3.5rem; transform: rotate(-10deg);">🐸</div>
+          <div>
+            <span class="badge badge-pill badge-light text-success px-3 py-2 mb-3 shadow-sm" style="font-weight: 800; letter-spacing: 1px;">EXPERIMENT</span>
+          </div>
+          <div class="mt-5 pt-5">
+            <h3 class="mb-3" style="font-weight: 800; font-size: 3.5rem; line-height: 0.95; letter-spacing: -0.05em;">Frog<br>Prince</h3>
+            <p class="mb-0" style="font-weight: 600; font-size: 1.1rem; line-height: 1.5; letter-spacing: -0.5px;">Leaping into brutalist UI patterns.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT / MANIFESTO SECTION -->
+  <section id="about" class="container-fluid bg-dark text-white py-5 position-relative overflow-hidden mt-5">
+    
+    <!-- Background Abstract Elements -->
+    <div class="position-absolute" style="top: -10%; left: -2%; font-size: 12rem; opacity: 0.1; transform: rotate(30deg);">👻</div>
+    <div class="position-absolute" style="bottom: -5%; right: -2%; font-size: 12rem; opacity: 0.1; transform: rotate(-20deg);">👾</div>
+    <div class="position-absolute d-none d-md-block" style="top: 40%; left: 80%; font-size: 6rem; opacity: 0.1; transform: rotate(15deg);">💡</div>
+
+    <div class="container py-5 my-5 text-center position-relative" style="z-index: 10;">
+      <h2 class="text-warning mb-4" style="font-weight: 800; font-size: 6vw; line-height: 0.9; letter-spacing: -0.06em;">NOT YOUR<br>AVERAGE PIXEL<br>PUSHER</h2>
+      <p class="mx-auto text-light mt-5" style="font-weight: 600; font-size: 1.5rem; line-height: 1.7; letter-spacing: -0.02em; max-width: 800px;">
+        I believe design should make you smile. I combine serious business goals with unserious, delightful interfaces. If you want a boring, strictly grid-locked corporate site, I'm probably not your human. Let's make the web fun again!
+      </p>
+    </div>
+  </section>
+
+  <!-- HUGE FOOTER / CTA -->
+  <footer id="contact" class="bg-warning py-5 text-center position-relative overflow-hidden">
+    
+    <!-- Subtle Background Marquee Texture -->
+    <div class="position-absolute w-100 text-nowrap" style="top: 20px; font-weight: 800; font-size: 2rem; letter-spacing: 10px; opacity: 0.15; transform: scale(1.1);">
+      DOODLE • DESIGN • DOODLE • DESIGN • DOODLE • DESIGN • DOODLE • DESIGN
+    </div>
+    
+    <div class="container py-5 mt-5 mb-4 position-relative" style="z-index: 10;">
+      <h1 class="text-dark mb-5" style="font-weight: 800; font-size: 10vw; line-height: 0.8; letter-spacing: -0.08em;">LET'S TALK!</h1>
+      <a href="mailto:hello@doodle.studio" class="btn btn-dark badge-pill px-5 py-3 shadow-lg mt-3" style="font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; text-transform: lowercase;">
+        hello@doodle.studio ✉️
+      </a>
+      
+      <div class="mt-5 pt-5 text-dark" style="font-weight: 600; font-size: 1rem; letter-spacing: -0.5px;">
+        © 2026 Creative Doodler. Handcrafted with zero JS and maximum vibes.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
