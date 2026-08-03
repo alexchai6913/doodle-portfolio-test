@@ -304,35 +304,42 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   box-shadow: 0 4px 20px rgba(18, 18, 18, 0.25);
 }
 
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  z-index: 2;
-  position: relative;
-}
-
-.nav-icon-menu, .nav-icon-close {
+.nav-icon {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: opacity 0.3s, transform 0.3s;
 }
 
-.nav-icon-close {
+.nav-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-icon--close {
   opacity: 0;
   transform: rotate(90deg);
 }
 
-.menu-open .nav-icon-menu {
+.menu-open .nav-icon--menu {
   opacity: 0;
   transform: rotate(-90deg);
 }
 
-.menu-open .nav-icon-close {
+.menu-open .nav-icon--close {
   opacity: 1;
   transform: rotate(0);
+}
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  z-index: 2;
+  position: relative;
 }
 
 /* ---- MOBILE MENU OVERLAY ---- */
@@ -789,7 +796,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   font-size: clamp(3.5rem, 12vw, 14rem);
   line-height: 1.1;
   letter-spacing: -0.07em;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .footer-line {
@@ -811,7 +818,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   font-size: clamp(1rem, 3vw, 1.25rem);
   letter-spacing: -0.03em;
   transition: box-shadow 0.3s;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 
 .footer-cta:hover {
@@ -830,7 +837,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   font-size: 0.9rem;
   letter-spacing: -0.02em;
   transition: background 0.3s, color 0.3s, transform 0.2s;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
 }
 
 .footer-ping:hover {
@@ -954,6 +961,8 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   .section-work { padding: 5rem 1.25rem; }
   .section-about { padding: 5rem 1.25rem; }
   .section-footer { padding: 5rem 1.25rem 3rem; }
+
+  .footer-copy { font-size: 0.6rem; letter-spacing: 0.05em; }
 
   .work-row { grid-template-columns: 30px 1fr auto; }
   .work-index { font-size: 0.7rem; }
