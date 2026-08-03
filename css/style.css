@@ -450,7 +450,9 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 .hero-title .split-line {
   display: block;
   overflow: hidden;
-  line-height: 0.85;
+  line-height: 1.15;
+  padding-bottom: 0.06em;
+  white-space: nowrap;
 }
 
 .hero-desc {
@@ -562,7 +564,9 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 .section-heading .split-line {
   display: block;
   overflow: hidden;
-  line-height: 0.92;
+  line-height: 1.15;
+  padding-bottom: 0.06em;
+  white-space: nowrap;
 }
 
 .work-list {
@@ -611,7 +615,9 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 .work-title .split-line {
   display: block;
   overflow: hidden;
-  line-height: 0.9;
+  line-height: 1.15;
+  padding-bottom: 0.05em;
+  white-space: nowrap;
 }
 
 .work-meta {
@@ -790,10 +796,12 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   margin-bottom: 3rem;
 }
 
-.footer-title .split-line {
+.footer-line {
   display: block;
   overflow: hidden;
-  line-height: 0.8;
+  line-height: 1.15;
+  padding-bottom: 0.06em;
+  white-space: nowrap;
 }
 
 .footer-cta {

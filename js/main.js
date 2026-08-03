@@ -400,9 +400,12 @@
     // ---- 2l. Footer ----
     const footerTitle = $('.footer-title');
     if (footerTitle) {
+      const footerLines = $$('.footer-line', footerTitle);
       ScrollTrigger.create({
         trigger: footerTitle, start: 'top bottom-=60px',
-        onEnter: () => gsap.fromTo(footerTitle, { opacity: 0, y: 60, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power4.out' }),
+        onEnter: () => {
+          gsap.fromTo(footerLines, { opacity: 0, y: 60, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, stagger: 0.12, duration: 0.8, ease: 'power4.out' });
+        },
         once: true
       });
     }
@@ -419,15 +422,21 @@
       });
     }
 
-    // Footer title letter hover
+    // Footer title letter hover — split each line individually
     if (footerTitle && !IS_TOUCH) {
-      const fchars = splitChars(footerTitle);
-      footerTitle.addEventListener('mouseenter', () => {
-        gsap.to(fchars, { y: gsap.utils.random(-20, -10), rotation: gsap.utils.random(-5, 5), stagger: { each: 0.02, from: 'random' }, duration: 0.35, ease: 'power2.out' });
+      const allChars = [];
+      $$('.footer-line', footerTitle).forEach(line => {
+        const chars = splitChars(line);
+        chars.forEach(c => allChars.push(c));
       });
-      footerTitle.addEventListener('mouseleave', () => {
-        gsap.to(fchars, { y: 0, rotation: 0, stagger: { each: 0.01 }, duration: 0.4, ease: 'elastic.out(1, 0.5)' });
-      });
+      if (allChars.length) {
+        footerTitle.addEventListener('mouseenter', () => {
+          gsap.to(allChars, { y: gsap.utils.random(-20, -10), rotation: gsap.utils.random(-5, 5), stagger: { each: 0.02, from: 'random' }, duration: 0.35, ease: 'power2.out' });
+        });
+        footerTitle.addEventListener('mouseleave', () => {
+          gsap.to(allChars, { y: 0, rotation: 0, stagger: { each: 0.01 }, duration: 0.4, ease: 'elastic.out(1, 0.5)' });
+        });
+      }
     }
 
     // ---- 2m. Haptics (delegated tap handler) ----
