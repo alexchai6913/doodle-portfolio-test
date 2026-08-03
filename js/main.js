@@ -429,8 +429,7 @@
         gsap.to(magneticBtn, { x: (e.clientX - r.left - r.width / 2) * 0.3, y: (e.clientY - r.top - r.height / 2) * 0.3, duration: 0.4, ease: 'power3.out', overwrite: 'auto' });
       });
       magneticBtn.addEventListener('mouseleave', () => {
-        gsap.killTweensOf(magneticBtn, 'x,y');
-        gsap.to(magneticBtn, { x: 0, y: 0, duration: 0.45, ease: 'power3.out', overwrite: 'auto' });
+        gsap.to(magneticBtn, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.4)', overwrite: 'auto' });
       });
     }
 
@@ -443,11 +442,10 @@
       });
       if (allChars.length) {
         footerTitle.addEventListener('mouseenter', () => {
-          gsap.to(allChars, { y: () => gsap.utils.random(-18, -6), rotation: () => gsap.utils.random(-6, 6), stagger: { each: 0.02, from: 'random' }, duration: 0.3, ease: 'power2.out' });
+          gsap.to(allChars, { y: gsap.utils.random(-20, -10), rotation: gsap.utils.random(-5, 5), stagger: { each: 0.02, from: 'random' }, duration: 0.35, ease: 'power2.out' });
         });
         footerTitle.addEventListener('mouseleave', () => {
-          gsap.killTweensOf(allChars, 'y,rotation');
-          gsap.to(allChars, { y: 0, rotation: 0, stagger: { each: 0.01 }, duration: 0.35, ease: 'power3.inOut' });
+          gsap.to(allChars, { y: 0, rotation: 0, stagger: { each: 0.01 }, duration: 0.4, ease: 'elastic.out(1, 0.5)' });
         });
       }
     }

@@ -854,10 +854,14 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   line-height: 1.1;
   letter-spacing: -0.07em;
   margin-bottom: 2rem;
+  width: fit-content;
+  margin-inline: auto;
 }
 
 .footer-line {
   display: block;
+  width: fit-content;
+  margin-inline: auto;
   white-space: nowrap;
   opacity: 0;
   line-height: 1.1;
