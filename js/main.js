@@ -433,6 +433,18 @@
       });
     }
 
+    // CTA entrance reveal
+    const footerCTA = $('.footer-cta');
+    if (footerCTA) {
+      ScrollTrigger.create({
+        trigger: footerTitle, start: 'top bottom-=60px',
+        onEnter: () => {
+          gsap.fromTo(footerCTA, { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, delay: 0.35, ease: 'power4.out' });
+        },
+        once: true
+      });
+    }
+
     // Footer title letter hover — split each line individually
     if (footerTitle && !IS_TOUCH) {
       const allChars = [];
@@ -441,11 +453,15 @@
         chars.forEach(c => allChars.push(c));
       });
       if (allChars.length) {
+        let footerHoverTimer;
         footerTitle.addEventListener('mouseenter', () => {
+          clearTimeout(footerHoverTimer);
           gsap.to(allChars, { y: gsap.utils.random(-20, -10), rotation: gsap.utils.random(-5, 5), stagger: { each: 0.02, from: 'random' }, duration: 0.35, ease: 'power2.out' });
         });
         footerTitle.addEventListener('mouseleave', () => {
-          gsap.to(allChars, { y: 0, rotation: 0, stagger: { each: 0.01 }, duration: 0.4, ease: 'elastic.out(1, 0.5)' });
+          footerHoverTimer = setTimeout(() => {
+            gsap.to(allChars, { y: 0, rotation: 0, stagger: { each: 0.01 }, duration: 0.4, ease: 'elastic.out(1, 0.5)' });
+          }, 150);
         });
       }
     }
