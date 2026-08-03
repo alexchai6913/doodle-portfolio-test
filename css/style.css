@@ -497,7 +497,6 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
    ============================================================ */
 .marquee-section {
   background: var(--ink);
-  overflow: hidden;
   position: relative;
   z-index: 10;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
