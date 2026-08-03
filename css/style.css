@@ -7,9 +7,10 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
-  scroll-behavior: auto; /* Lenis handles this */
+  scroll-behavior: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
@@ -18,6 +19,7 @@ body {
   color: var(--ink);
   line-height: 1.5;
   -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
 }
 
 body.loading {
@@ -46,10 +48,10 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
   --radius-lg: 24px;
   --radius-pill: 9999px;
 
-  --z-cursor: 9998;
+  --z-cursor: 11000;
   --z-preloader: 10000;
-  --z-menu: 9999;
-  --z-nav: 1000;
+  --z-nav: 9999;
+  --z-menu: 9998;
   --z-backtop: 900;
 }
 
@@ -148,7 +150,8 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--ink);
+  background: #fff;
+  mix-blend-mode: difference;
   pointer-events: none;
   opacity: 1;
   will-change: transform;
@@ -160,7 +163,8 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1.5px solid var(--ink);
+  border: 1.5px solid #fff;
+  mix-blend-mode: difference;
   pointer-events: none;
   opacity: 0.6;
   display: flex;
@@ -187,7 +191,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: #fff;
   opacity: 0;
   white-space: nowrap;
   transition: opacity 0.2s;
@@ -313,34 +317,56 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   transition: opacity 0.3s, transform 0.3s;
 }
 
-.nav-icon svg {
-  width: 24px;
-  height: 24px;
-}
-
-.nav-icon--close {
-  opacity: 0;
-  transform: rotate(90deg);
-}
-
-.menu-open .nav-icon--menu {
-  opacity: 0;
-  transform: rotate(-90deg);
-}
-
-.menu-open .nav-icon--close {
-  opacity: 1;
-  transform: rotate(0);
-}
-
+/* ---- Hamburger → X (pure CSS, no GSAP) ---- */
 .nav-toggle {
-  display: none;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   width: 44px;
   height: 44px;
-  z-index: 2;
   position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.ham {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.15s;
+}
+
+.ham:nth-child(2) {
+  transform-origin: right center;
+}
+
+.nav-toggle:hover .ham:nth-child(2) {
+  transform: scaleX(0.55);
+}
+
+.menu-open .nav-toggle .ham {
+  background: var(--paper);
+}
+
+.menu-open .nav-toggle .ham:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-open .nav-toggle .ham:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.menu-open .nav-toggle .ham:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (min-width: 1024px) {
+  .nav-toggle { display: none; }
 }
 
 /* ---- MOBILE MENU OVERLAY ---- */
@@ -749,6 +775,36 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   margin-top: 5rem;
 }
 
+/* ---- Horizontal scroll strip ---- */
+.about-hscroll {
+  overflow: hidden;
+  margin-top: 4rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-hscroll-track {
+  display: flex;
+  gap: 2rem;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.about-hscroll-track span {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: clamp(0.9rem, 2vw, 1.3rem);
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s;
+  flex-shrink: 0;
+}
+
+.about-hscroll-track span:hover {
+  color: var(--yellow);
+}
+
 .stat {
   text-align: center;
 }
@@ -904,7 +960,6 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 /* Tablet */
 @media (max-width: 1023px) {
   .nav-links { display: none; }
-  .nav-toggle { display: flex; }
 
   .work-row {
     grid-template-columns: 40px 1fr auto;

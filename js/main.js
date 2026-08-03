@@ -364,6 +364,21 @@
       });
     }
 
+    // Horizontal scroll strip in about
+    const hscrollTrack = $('.about-hscroll-track');
+    if (hscrollTrack) {
+      gsap.to(hscrollTrack, {
+        x: () => -(hscrollTrack.scrollWidth - hscrollTrack.parentElement.offsetWidth),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.about-hscroll',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.5
+        }
+      });
+    }
+
     // Stats count-up
     const statsSection = $('.about-stats');
     if (statsSection) {
@@ -455,7 +470,11 @@
     let rt;
     window.addEventListener('resize', () => {
       clearTimeout(rt);
-      rt = setTimeout(() => { ScrollTrigger.refresh(); lucide.createIcons(); }, 200);
+      rt = setTimeout(() => {
+        if (menuOpen && window.innerWidth >= 1024) toggleMenu();
+        ScrollTrigger.refresh();
+        lucide.createIcons();
+      }, 200);
     });
 
     setTimeout(() => ScrollTrigger.refresh(), 100);
