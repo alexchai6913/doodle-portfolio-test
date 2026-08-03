@@ -35,44 +35,34 @@
     }
   }
 
-  // ---- Custom text split (no SplitText plugin needed) ----
-  // Returns array of inner <span> elements, each inside an overflow:hidden wrapper.
+  // ---- Custom text split (no overflow:hidden, no clipping) ----
   function splitChars(el) {
     const text = el.textContent;
     el.innerHTML = '';
     return text.split('').map(c => {
-      const outer = document.createElement('span');
-      outer.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:top';
-      const inner = document.createElement('span');
-      inner.style.cssText = 'display:inline-block';
-      inner.textContent = c === ' ' ? '\u00A0' : c;
-      outer.appendChild(inner);
-      el.appendChild(outer);
-      return inner;
+      const span = document.createElement('span');
+      span.style.display = 'inline-block';
+      span.textContent = c === ' ' ? '\u00A0' : c;
+      el.appendChild(span);
+      return span;
     });
   }
 
-  // Splits text into words, wrapping each in overflow:hidden + inner span.
-  // Preserves spaces between words.
+  // Splits text into words, each wrapped in an inline-block span.
   function splitWords(el) {
     const words = el.textContent.match(/\S+|\s+/g) || [];
     el.innerHTML = '';
     return words.map(w => {
+      const sp = document.createElement('span');
       if (/^\s+$/.test(w)) {
-        const sp = document.createElement('span');
         sp.style.whiteSpace = 'pre';
         sp.textContent = w;
-        el.appendChild(sp);
-        return sp;
+      } else {
+        sp.style.display = 'inline-block';
+        sp.textContent = w;
       }
-      const outer = document.createElement('span');
-      outer.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:top';
-      const inner = document.createElement('span');
-      inner.style.cssText = 'display:inline-block';
-      inner.textContent = w;
-      outer.appendChild(inner);
-      el.appendChild(outer);
-      return inner;
+      el.appendChild(sp);
+      return sp;
     });
   }
 
@@ -278,8 +268,8 @@
     $$('.hero-title .split-line').forEach((line, i) => {
       const spans = splitChars(line);
       heroTL.fromTo(spans,
-        { yPercent: 110 },
-        { yPercent: 0, stagger: 0.03, duration: 0.8 },
+        { yPercent: 110, opacity: 0 },
+        { yPercent: 0, opacity: 1, stagger: 0.03, duration: 0.8 },
         i === 0 ? '-=0.2' : '-=0.4'
       );
     });
@@ -322,6 +312,8 @@
     });
 
     // ---- 2j. Work rows: scroll reveal + hover ----
+    // Pre-split all work title chars (avoids DOM destruction under cursor)
+    const workCharMap = new Map();
     $$('.work-row').forEach((row, i) => {
       ScrollTrigger.create({
         trigger: row, start: 'top bottom-=50px',
@@ -331,14 +323,18 @@
 
       const titleEl = $('.work-title', row);
       if (!titleEl) return;
-      let charSpans = null;
+
+      const chars = [];
+      $$('.split-line', titleEl).forEach(line => {
+        splitChars(line).forEach(c => chars.push(c));
+      });
+      workCharMap.set(row, chars);
 
       row.addEventListener('mouseenter', () => {
-        if (!charSpans) charSpans = splitChars(titleEl);
-        gsap.to(charSpans, { y: -8, stagger: { each: 0.015, from: 'random' }, duration: 0.3, ease: 'power2.out' });
+        gsap.to(chars, { y: -8, stagger: { each: 0.015, from: 'random' }, duration: 0.3, ease: 'power2.out' });
       });
       row.addEventListener('mouseleave', () => {
-        if (charSpans) gsap.to(charSpans, { y: 0, stagger: { each: 0.01 }, duration: 0.3, ease: 'power2.in' });
+        gsap.to(chars, { y: 0, stagger: { each: 0.01 }, duration: 0.3, ease: 'power2.in' });
       });
     });
 
@@ -349,7 +345,7 @@
         start: 'top bottom-=80px',
         onEnter: () => {
           const spans = splitChars(line);
-          gsap.fromTo(spans, { yPercent: 110 }, { yPercent: 0, stagger: 0.02, duration: 0.7, ease: 'power3.out' });
+          gsap.fromTo(spans, { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, stagger: 0.02, duration: 0.7, ease: 'power3.out' });
         },
         once: true
       });

@@ -170,8 +170,8 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 }
 
 .cursor-ring.active {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   opacity: 1;
   border-width: 1.5px;
   mix-blend-mode: normal;
@@ -183,9 +183,9 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 
 .cursor-label {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--ink);
   opacity: 0;
@@ -263,7 +263,12 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   font-size: 0.95rem;
   letter-spacing: -0.02em;
   position: relative;
-  padding: 0.3rem 0;
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+}
+
+.nav-links a.nav-cta {
+  padding: 0.6rem 1.5rem;
 }
 
 .nav-links a:not(.nav-cta)::after {
@@ -449,9 +454,6 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 
 .hero-title .split-line {
   display: block;
-  overflow: hidden;
-  line-height: 1.15;
-  padding-bottom: 0.06em;
   white-space: nowrap;
 }
 
@@ -563,10 +565,8 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 
 .section-heading .split-line {
   display: block;
-  overflow: hidden;
-  line-height: 1.15;
-  padding-bottom: 0.06em;
   white-space: nowrap;
+  line-height: 0.92;
 }
 
 .work-list {
@@ -614,10 +614,8 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 
 .work-title .split-line {
   display: block;
-  overflow: hidden;
-  line-height: 1.15;
-  padding-bottom: 0.05em;
   white-space: nowrap;
+  line-height: 0.8;
 }
 
 .work-meta {
@@ -734,7 +732,6 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 
 .about-text .split-line {
   display: block;
-  overflow: hidden;
   line-height: 1.7;
 }
 
@@ -791,17 +788,16 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 .footer-title {
   font-weight: 800;
   font-size: clamp(3.5rem, 12vw, 14rem);
-  line-height: 0.8;
+  line-height: 0.85;
   letter-spacing: -0.07em;
   margin-bottom: 3rem;
 }
 
 .footer-line {
   display: block;
-  overflow: hidden;
-  line-height: 1.15;
-  padding-bottom: 0.06em;
   white-space: nowrap;
+  opacity: 0;
+  line-height: 0.85;
 }
 
 .footer-cta {
