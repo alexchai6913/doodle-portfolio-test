@@ -447,7 +447,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 .hero-title {
   font-weight: 800;
   font-size: clamp(3.5rem, 11vw, 12rem);
-  line-height: 0.85;
+  line-height: 1.1;
   letter-spacing: -0.06em;
   margin-bottom: 1.5rem;
 }
@@ -455,6 +455,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 .hero-title .split-line {
   display: block;
   white-space: nowrap;
+  line-height: 1.1;
 }
 
 .hero-desc {
@@ -559,14 +560,14 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 .section-heading {
   font-weight: 800;
   font-size: clamp(2.5rem, 7vw, 5rem);
-  line-height: 0.92;
+  line-height: 1.1;
   letter-spacing: -0.05em;
 }
 
 .section-heading .split-line {
   display: block;
   white-space: nowrap;
-  line-height: 0.92;
+  line-height: 1.1;
 }
 
 .work-list {
@@ -608,14 +609,13 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 .work-title {
   font-weight: 800;
   font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 0.9;
   letter-spacing: -0.05em;
 }
 
 .work-title .split-line {
   display: block;
   white-space: nowrap;
-  line-height: 0.8;
+  line-height: 1.1;
 }
 
 .work-meta {
@@ -788,7 +788,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
 .footer-title {
   font-weight: 800;
   font-size: clamp(3.5rem, 12vw, 14rem);
-  line-height: 0.85;
+  line-height: 1.1;
   letter-spacing: -0.07em;
   margin-bottom: 3rem;
 }
@@ -797,7 +797,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   display: block;
   white-space: nowrap;
   opacity: 0;
-  line-height: 0.85;
+  line-height: 1.1;
 }
 
 .footer-cta {
