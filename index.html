@@ -4,160 +4,237 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Creative Doodler | Designer Portfolio</title>
-  
-  <!-- Bootstrap 4.4.1 CSS ONLY -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  
-  <!-- Plus Jakarta Sans Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-light text-dark" style="font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden;">
+<body class="loading">
 
-  <!-- HERO SECTION -->
-  <header class="bg-warning position-relative overflow-hidden d-flex align-items-center" style="min-height: 100vh;">
-    
-    <!-- Navbar -->
-    <nav class="position-absolute w-100 d-flex justify-content-between align-items-center p-4 p-md-5" style="top: 0; z-index: 100;">
-      <div class="text-dark" style="font-weight: 800; font-size: 1.5rem; letter-spacing: -1px;">doodle.studio</div>
-      <div class="d-none d-md-flex">
-        <a href="#work" onclick="event.preventDefault(); document.querySelector(this.hash).scrollIntoView({behavior:'smooth'});" class="text-dark mx-3 text-decoration-none" style="font-weight: 600; letter-spacing: -0.5px;">Work</a>
-        <a href="#about" onclick="event.preventDefault(); document.querySelector(this.hash).scrollIntoView({behavior:'smooth'});" class="text-dark mx-3 text-decoration-none" style="font-weight: 600; letter-spacing: -0.5px;">About</a>
-      </div>
-      <a href="#contact" onclick="event.preventDefault(); document.querySelector(this.hash).scrollIntoView({behavior:'smooth'});" class="btn btn-dark badge-pill px-4 py-2 shadow-sm" style="font-weight: 800; letter-spacing: -0.5px;">Hire Me 👋</a>
-    </nav>
-
-    <!-- Floating Doodles (Emojis used as zero-asset SVGs) -->
-    <div class="position-absolute" style="top: 15%; left: 8%; font-size: 4rem; transform: rotate(-25deg);">🎨</div>
-    <div class="position-absolute" style="top: 20%; right: 12%; font-size: 5rem; transform: rotate(15deg);">✨</div>
-    <div class="position-absolute" style="bottom: 15%; left: 15%; font-size: 3.5rem; transform: rotate(10deg);">🚀</div>
-    <div class="position-absolute" style="bottom: 25%; right: 8%; font-size: 4.5rem; transform: rotate(-15deg);">✌️</div>
-    <div class="position-absolute d-none d-md-block" style="top: 45%; left: 3%; font-size: 3rem; transform: rotate(45deg);">✏️</div>
-
-    <!-- Hero Content -->
-    <div class="container text-center position-relative mt-5 pt-5" style="z-index: 10;">
-      <div class="badge badge-pill badge-light shadow-sm text-dark px-4 py-2 mb-4" style="font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;">Hello, World!</div>
-      
-      <!-- Highly stylized typography using inline styles to override Bootstrap's basic limits -->
-      <h1 class="text-dark mb-3 mx-auto" style="font-weight: 800; font-size: 11vw; line-height: 0.85; letter-spacing: -0.07em;">
-        CREATIVE<br>DOODLER
-      </h1>
-      
-      <p class="mx-auto text-dark mt-4 px-3" style="font-weight: 600; font-size: 1.25rem; line-height: 1.6; letter-spacing: -0.02em; max-width: 600px;">
-        I design fun, engaging, and colorful digital experiences. No boring strict Swiss grids here—just pure, delightful creative chaos.
-      </p>
+  <!-- ==================== PRELOADER ==================== -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-wordmark">doodle.studio</div>
+    <div class="preloader-status-wrap">
+      <span class="preloader-status">sending vibes</span>
     </div>
-  </header>
-
-  <!-- STATIC MARQUEE TAPE -->
-  <div class="bg-dark text-white py-3 overflow-hidden d-flex align-items-center" style="transform: rotate(-2deg) scale(1.05); margin-top: -25px; z-index: 20; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-    <div class="text-nowrap" style="font-weight: 800; font-size: 2rem; letter-spacing: -1px; text-transform: uppercase;">
-      &nbsp;✦ UI/UX DESIGN ✦ WEB ANIMATION ✦ BRAND IDENTITY ✦ DOODLES ✦ UI/UX DESIGN ✦ WEB ANIMATION ✦ BRAND IDENTITY ✦ DOODLES ✦ UI/UX DESIGN
+    <div class="preloader-bar-track">
+      <div class="preloader-bar"></div>
     </div>
+    <div class="preloader-counter">0</div>
   </div>
 
-  <!-- SELECTED WORKS SECTION -->
-  <section id="work" class="container py-5 mt-5">
-    <div class="text-center mb-5 pb-4 mt-5">
-      <h2 class="text-dark" style="font-weight: 800; font-size: 4rem; line-height: 1; letter-spacing: -0.05em;">SELECTED<br>MAGIC ✨</h2>
+  <!-- ==================== CUSTOM CURSOR ==================== -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring">
+    <span class="cursor-label"></span>
+  </div>
+
+  <!-- ==================== SCROLL PROGRESS ==================== -->
+  <div class="scroll-progress">
+    <div class="scroll-progress-fill"></div>
+  </div>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="nav" class="nav">
+    <a href="#" class="nav-logo">doodle.studio</a>
+    <div class="nav-links">
+      <a href="#work" data-haptic="8">Work</a>
+      <a href="#about" data-haptic="8">About</a>
+      <a href="#contact" class="nav-cta" data-haptic="15">Hire Me</a>
     </div>
-    
-    <!-- Staggered Awwwards-style Grid -->
-    <div class="row">
-      
-      <!-- Project 1 -->
-      <div class="col-md-6 mb-5">
-        <div class="bg-danger text-white p-5 rounded-lg shadow-lg position-relative d-flex flex-column justify-content-between" style="min-height: 450px; transform: rotate(-1deg);">
-          <div class="position-absolute" style="top: 30px; right: 30px; font-size: 3.5rem; transform: rotate(10deg);">🦄</div>
-          <div>
-            <span class="badge badge-pill badge-light text-danger px-3 py-2 mb-3 shadow-sm" style="font-weight: 800; letter-spacing: 1px;">APP DESIGN</span>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" data-haptic="20">
+      <i data-lucide="menu" class="nav-icon-menu"></i>
+      <i data-lucide="x" class="nav-icon-close"></i>
+    </button>
+  </nav>
+
+  <!-- ==================== MOBILE MENU OVERLAY ==================== -->
+  <div id="menu-overlay" class="menu-overlay" data-lenis-prevent>
+    <nav class="menu-links">
+      <a href="#work" data-menu-link data-haptic="25">Work</a>
+      <a href="#about" data-menu-link data-haptic="25">About</a>
+      <a href="#contact" data-menu-link data-haptic="25">Contact</a>
+    </nav>
+    <div class="menu-socials">
+      <a href="#" aria-label="Dribbble" data-haptic="10"><i data-lucide="dribbble"></i></a>
+      <a href="#" aria-label="Instagram" data-haptic="10"><i data-lucide="instagram"></i></a>
+      <a href="#" aria-label="LinkedIn" data-haptic="10"><i data-lucide="linkedin"></i></a>
+    </div>
+    <div class="menu-backdrop" aria-hidden="true"></div>
+  </div>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main>
+
+    <!-- HERO -->
+    <header id="hero" class="hero">
+      <div class="hero-doodles">
+        <span class="hero-doodle" data-speed="0.5" style="top:15%;left:8%;">🎨</span>
+        <span class="hero-doodle" data-speed="0.3" style="top:20%;right:12%;">✨</span>
+        <span class="hero-doodle" data-speed="0.6" style="bottom:15%;left:15%;">🚀</span>
+        <span class="hero-doodle" data-speed="0.4" style="bottom:25%;right:8%;">✌️</span>
+        <span class="hero-doodle" data-speed="0.2" style="top:45%;left:3%;">✏️</span>
+      </div>
+      <div class="hero-content">
+        <div class="hero-badge">Hello, World!</div>
+        <h1 class="hero-title">
+          <span class="split-line">CREATIVE</span>
+          <span class="split-line">DOODLER</span>
+        </h1>
+        <p class="hero-desc">I design fun, engaging, and colorful digital experiences. No boring strict Swiss grids here—just pure, delightful creative chaos.</p>
+        <div class="hero-scroll" data-haptic="10">
+          <span>Scroll</span>
+          <i data-lucide="chevron-down"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- MARQUEE -->
+    <div class="marquee-section">
+      <div class="marquee marquee--top">
+        <div class="marquee-content">
+          <span>✦ UI/UX DESIGN</span><i data-lucide="sparkles"></i>
+          <span>✦ WEB ANIMATION</span><i data-lucide="pen-tool"></i>
+          <span>✦ BRAND IDENTITY</span><i data-lucide="palette"></i>
+          <span>✦ DOODLES</span><i data-lucide="arrow-up-right"></i>
+          <span>✦ UI/UX DESIGN</span><i data-lucide="sparkles"></i>
+          <span>✦ WEB ANIMATION</span><i data-lucide="pen-tool"></i>
+          <span>✦ BRAND IDENTITY</span><i data-lucide="palette"></i>
+          <span>✦ DOODLES</span><i data-lucide="arrow-up-right"></i>
+          <span>✦ UI/UX DESIGN</span><i data-lucide="sparkles"></i>
+          <span>✦ WEB ANIMATION</span><i data-lucide="pen-tool"></i>
+          <span>✦ BRAND IDENTITY</span><i data-lucide="palette"></i>
+          <span>✦ DOODLES</span><i data-lucide="arrow-up-right"></i>
+        </div>
+      </div>
+      <div class="marquee marquee--bottom">
+        <div class="marquee-content marquee-content--reverse">
+          <span>✦ CODING</span><i data-lucide="code-2"></i>
+          <span>✦ CREATIVE DIRECTION</span><i data-lucide="compass"></i>
+          <span>✦ TYPOGRAPHY</span><i data-lucide="type"></i>
+          <span>✦ ILLUSTRATION</span><i data-lucide="pencil-ruler"></i>
+          <span>✦ CODING</span><i data-lucide="code-2"></i>
+          <span>✦ CREATIVE DIRECTION</span><i data-lucide="compass"></i>
+          <span>✦ TYPOGRAPHY</span><i data-lucide="type"></i>
+          <span>✦ ILLUSTRATION</span><i data-lucide="pencil-ruler"></i>
+          <span>✦ CODING</span><i data-lucide="code-2"></i>
+          <span>✦ CREATIVE DIRECTION</span><i data-lucide="compass"></i>
+          <span>✦ TYPOGRAPHY</span><i data-lucide="type"></i>
+          <span>✦ ILLUSTRATION</span><i data-lucide="pencil-ruler"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- WORK -->
+    <section id="work" class="section-work">
+      <div class="section-header" data-reveal>
+        <h2 class="section-heading split-line">Selected<br>Magic ✨</h2>
+      </div>
+      <div class="work-list">
+        <a href="#" class="work-row" data-accent="coral" data-cursor-label="VIEW CASE →" data-haptic="25" data-reveal>
+          <span class="work-index">01</span>
+          <h3 class="work-title split-line">Candy<br>Crush</h3>
+          <div class="work-meta">
+            <span class="work-tags">App Design · UX Research · Prototype</span>
+            <p class="work-desc">A sweet approach to addictive UI.</p>
           </div>
-          <div class="mt-5 pt-5">
-            <h3 class="mb-3" style="font-weight: 800; font-size: 3.5rem; line-height: 0.95; letter-spacing: -0.05em;">Candy<br>Crush</h3>
-            <p class="mb-0" style="font-weight: 600; font-size: 1.1rem; line-height: 1.5; letter-spacing: -0.5px;">A sweet approach to addictive UI.</p>
+          <div class="work-arrow"><i data-lucide="arrow-up-right"></i></div>
+          <div class="work-visual" aria-hidden="true">🦄</div>
+        </a>
+        <a href="#" class="work-row" data-accent="blue" data-cursor-label="VIEW CASE →" data-haptic="25" data-reveal>
+          <span class="work-index">02</span>
+          <h3 class="work-title split-line">Space<br>Explorer</h3>
+          <div class="work-meta">
+            <span class="work-tags">Web Promo · Motion · 3D</span>
+            <p class="work-desc">Taking web graphics to outer space.</p>
+          </div>
+          <div class="work-arrow"><i data-lucide="arrow-up-right"></i></div>
+          <div class="work-visual" aria-hidden="true">🪐</div>
+        </a>
+        <a href="#" class="work-row" data-accent="teal" data-cursor-label="VIEW CASE →" data-haptic="25" data-reveal>
+          <span class="work-index">03</span>
+          <h3 class="work-title split-line">Donut<br>Shop</h3>
+          <div class="work-meta">
+            <span class="work-tags">Branding · Identity · Packaging</span>
+            <p class="work-desc">Tasty colors and delicious typography.</p>
+          </div>
+          <div class="work-arrow"><i data-lucide="arrow-up-right"></i></div>
+          <div class="work-visual" aria-hidden="true">🍩</div>
+        </a>
+        <a href="#" class="work-row" data-accent="green" data-cursor-label="VIEW CASE →" data-haptic="25" data-reveal>
+          <span class="work-index">04</span>
+          <h3 class="work-title split-line">Frog<br>Prince</h3>
+          <div class="work-meta">
+            <span class="work-tags">Experiment · UI · Brutalism</span>
+            <p class="work-desc">Leaping into brutalist UI patterns.</p>
+          </div>
+          <div class="work-arrow"><i data-lucide="arrow-up-right"></i></div>
+          <div class="work-visual" aria-hidden="true">🐸</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section-about">
+      <div class="about-bg-doodle" aria-hidden="true">👻</div>
+      <div class="about-bg-doodle about-bg-doodle--secondary" aria-hidden="true">👾</div>
+      <div class="about-content">
+        <h2 class="section-heading" style="color:var(--yellow)" data-reveal>Not Your<br>Average Pixel<br>Pusher</h2>
+        <p class="about-text split-line" data-reveal>I believe design should make you smile. I combine serious business goals with unserious, delightful interfaces. If you want a boring, strictly grid-locked corporate site, I'm probably not your human. Let's make the web fun again!</p>
+        <div class="about-stats" data-reveal>
+          <div class="stat" data-stat="42">
+            <i data-lucide="folder-heart" class="stat-icon"></i>
+            <span class="stat-value">0</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat" data-stat="14">
+            <i data-lucide="users" class="stat-icon"></i>
+            <span class="stat-value">0</span>
+            <span class="stat-label">Clients</span>
+          </div>
+          <div class="stat" data-stat="7">
+            <i data-lucide="trophy" class="stat-icon"></i>
+            <span class="stat-value">0</span>
+            <span class="stat-label">Awards</span>
+          </div>
+          <div class="stat" data-stat="99">
+            <i data-lucide="cpu" class="stat-icon"></i>
+            <span class="stat-value">0</span>
+            <span class="stat-label">Pixels Pushed</span>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Project 2 (Staggered Column) -->
-      <div class="col-md-6 mb-5 mt-md-5 pt-md-5">
-        <div class="bg-primary text-white p-5 rounded-lg shadow-lg position-relative d-flex flex-column justify-content-between" style="min-height: 450px; transform: rotate(2deg);">
-          <div class="position-absolute" style="top: 30px; right: 30px; font-size: 3.5rem; transform: rotate(-15deg);">🪐</div>
-          <div>
-            <span class="badge badge-pill badge-light text-primary px-3 py-2 mb-3 shadow-sm" style="font-weight: 800; letter-spacing: 1px;">WEB PROMO</span>
-          </div>
-          <div class="mt-5 pt-5">
-            <h3 class="mb-3" style="font-weight: 800; font-size: 3.5rem; line-height: 0.95; letter-spacing: -0.05em;">Space<br>Explorer</h3>
-            <p class="mb-0" style="font-weight: 600; font-size: 1.1rem; line-height: 1.5; letter-spacing: -0.5px;">Taking web graphics to outer space.</p>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Project 3 -->
-      <div class="col-md-6 mb-5">
-        <div class="bg-info text-white p-5 rounded-lg shadow-lg position-relative d-flex flex-column justify-content-between" style="min-height: 450px; transform: rotate(1deg);">
-          <div class="position-absolute" style="top: 30px; right: 30px; font-size: 3.5rem; transform: rotate(20deg);">🍩</div>
-          <div>
-            <span class="badge badge-pill badge-light text-info px-3 py-2 mb-3 shadow-sm" style="font-weight: 800; letter-spacing: 1px;">BRANDING</span>
-          </div>
-          <div class="mt-5 pt-5">
-            <h3 class="mb-3" style="font-weight: 800; font-size: 3.5rem; line-height: 0.95; letter-spacing: -0.05em;">Donut<br>Shop</h3>
-            <p class="mb-0" style="font-weight: 600; font-size: 1.1rem; line-height: 1.5; letter-spacing: -0.5px;">Tasty colors and delicious typography.</p>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Project 4 (Staggered Column) -->
-      <div class="col-md-6 mb-5 mt-md-5 pt-md-5">
-        <div class="bg-success text-white p-5 rounded-lg shadow-lg position-relative d-flex flex-column justify-content-between" style="min-height: 450px; transform: rotate(-2deg);">
-          <div class="position-absolute" style="top: 30px; right: 30px; font-size: 3.5rem; transform: rotate(-10deg);">🐸</div>
-          <div>
-            <span class="badge badge-pill badge-light text-success px-3 py-2 mb-3 shadow-sm" style="font-weight: 800; letter-spacing: 1px;">EXPERIMENT</span>
-          </div>
-          <div class="mt-5 pt-5">
-            <h3 class="mb-3" style="font-weight: 800; font-size: 3.5rem; line-height: 0.95; letter-spacing: -0.05em;">Frog<br>Prince</h3>
-            <p class="mb-0" style="font-weight: 600; font-size: 1.1rem; line-height: 1.5; letter-spacing: -0.5px;">Leaping into brutalist UI patterns.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ABOUT / MANIFESTO SECTION -->
-  <section id="about" class="container-fluid bg-dark text-white py-5 position-relative overflow-hidden mt-5">
-    
-    <!-- Background Abstract Elements -->
-    <div class="position-absolute" style="top: -10%; left: -2%; font-size: 12rem; opacity: 0.1; transform: rotate(30deg);">👻</div>
-    <div class="position-absolute" style="bottom: -5%; right: -2%; font-size: 12rem; opacity: 0.1; transform: rotate(-20deg);">👾</div>
-    <div class="position-absolute d-none d-md-block" style="top: 40%; left: 80%; font-size: 6rem; opacity: 0.1; transform: rotate(15deg);">💡</div>
-
-    <div class="container py-5 my-5 text-center position-relative" style="z-index: 10;">
-      <h2 class="text-warning mb-4" style="font-weight: 800; font-size: 6vw; line-height: 0.9; letter-spacing: -0.06em;">NOT YOUR<br>AVERAGE PIXEL<br>PUSHER</h2>
-      <p class="mx-auto text-light mt-5" style="font-weight: 600; font-size: 1.5rem; line-height: 1.7; letter-spacing: -0.02em; max-width: 800px;">
-        I believe design should make you smile. I combine serious business goals with unserious, delightful interfaces. If you want a boring, strictly grid-locked corporate site, I'm probably not your human. Let's make the web fun again!
-      </p>
-    </div>
-  </section>
-
-  <!-- HUGE FOOTER / CTA -->
-  <footer id="contact" class="bg-warning py-5 text-center position-relative overflow-hidden">
-    
-    <!-- Subtle Background Marquee Texture -->
-    <div class="position-absolute w-100 text-nowrap" style="top: 20px; font-weight: 800; font-size: 2rem; letter-spacing: 10px; opacity: 0.15; transform: scale(1.1);">
-      DOODLE • DESIGN • DOODLE • DESIGN • DOODLE • DESIGN • DOODLE • DESIGN
-    </div>
-    
-    <div class="container py-5 mt-5 mb-4 position-relative" style="z-index: 10;">
-      <h1 class="text-dark mb-5" style="font-weight: 800; font-size: 10vw; line-height: 0.8; letter-spacing: -0.08em;">LET'S TALK!</h1>
-      <a href="mailto:hello@doodle.studio" class="btn btn-dark badge-pill px-5 py-3 shadow-lg mt-3" style="font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; text-transform: lowercase;">
-        hello@doodle.studio ✉️
+    <!-- FOOTER / CTA -->
+    <footer id="contact" class="section-footer">
+      <h2 class="footer-title" data-reveal>Let's<br>Talk!</h2>
+      <a href="mailto:hello@doodle.studio" class="footer-cta magnetic" data-cursor-label="SEND EMAIL ✉️" data-haptic="20" data-reveal>
+        <span>hello@doodle.studio</span>
+        <i data-lucide="mail"></i>
       </a>
-      
-      <div class="mt-5 pt-5 text-dark" style="font-weight: 600; font-size: 1rem; letter-spacing: -0.5px;">
-        © 2026 Creative Doodler. Handcrafted with zero JS and maximum vibes.
+      <div class="footer-socials" data-reveal>
+        <a href="#" aria-label="Dribbble" data-haptic="10"><i data-lucide="dribbble"></i></a>
+        <a href="#" aria-label="Instagram" data-haptic="10"><i data-lucide="instagram"></i></a>
+        <a href="#" aria-label="LinkedIn" data-haptic="10"><i data-lucide="linkedin"></i></a>
+        <a href="#" aria-label="Twitter" data-haptic="10"><i data-lucide="twitter"></i></a>
       </div>
-    </div>
-  </footer>
+      <p class="footer-copy" data-reveal>&copy; 2026 Creative Doodler. Handcrafted with love and maximum vibes.</p>
+    </footer>
 
+  </main>
+
+  <!-- ==================== BACK TO TOP ==================== -->
+  <button class="back-to-top" aria-label="Back to top" data-haptic="10">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
